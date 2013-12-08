@@ -1,0 +1,13 @@
+name 'rails-server'
+description 'Basic rails server'
+version '0.0.1'
+
+depends 'apt'
+depends 'nginx'
+depends 'rvm'
+depends 'database'
+depends 'puma'
+depends 'monit'
+depends 'mysql'
+depends 'postfix'
+depends 'sudo'

@@ -1,0 +1,8 @@
+production:
+  encoding: UTF8
+  database: <%= node['app']['dbname'] %>
+  port: 5432
+  adapter: postgresql
+  host: localhost
+  username: <%= node['app']['dbuser'] %>
+  password: <%= node['app']['dbpass'] %>

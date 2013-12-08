@@ -1,0 +1,8 @@
+directory "/home/<%= node.app.user -%>/app/current"
+environment "production"
+daemonize true
+pidfile  "/home/<%= node.app.user -%>/app/shared/puma/puma.pid"
+state_path "/home/<%= node.app.user -%>/app/shared/puma/puma.state"
+threads 0, 8
+bind "unix:///home/<%= node.app.user -%>/app/shared/puma/puma.sock"
+workers 0

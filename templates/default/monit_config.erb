@@ -1,0 +1,13 @@
+check process <%= node.app.name -%>.puma with pidfile /home/<%= node.app.user -%>/app/shared/puma/puma.pid
+  start program = "/bin/su - <%= node.app.user -%> -c 'cd /home/<%= node.app.user -%>/app/current && rvm <%= node.app.ruby -%> && bundle exec puma -C /home/<%= node.app.user -%>/app/shared/puma/puma.config'"
+  stop  program = "/bin/su - <%= node.app.user -%> -c 'cd /home/<%= node.app.user -%>/app/current && rvm <%= node.app.ruby -%> && bundle exec pumactl -S /home/<%= node.app.user -%>/app/shared/puma/puma.state stop'"
+  group <%= node.app.name %>
+
+<% if node.app[:sphinx] %>
+
+check process <%= node.app.name -%>.sphinx with pidfile /home/<%= node.app.user -%>/app/shared/pids/sphinx.pid
+  start program = "/bin/su - <%= node.app.user -%> -c 'cd /home/<%= node.app.user -%>/app/current && rvm <%= node.app.ruby -%> && env RAILS_ENV=production bundle exec rake ts:start'"
+  stop  program = "/bin/su - <%= node.app.user -%> -c 'cd /home/<%= node.app.user -%>/app/current && rvm <%= node.app.ruby -%> && env RAILS_ENV=production bundle exec rake ts:stop'"
+  group <%= node.app.name %>
+
+<% end %>
