@@ -3,6 +3,7 @@ include_recipe 'apt'
 
 # install nginx
 include_recipe 'nginx'
+node.default[:nginx][:client_max_body_size] = '64M'
 
 # install monit
 include_recipe 'monit'
