@@ -5,6 +5,10 @@ include_recipe 'apt'
 include_recipe 'nginx'
 node.default[:nginx][:client_max_body_size] = '64M'
 
+nginx_site 'default' do
+  enable false
+end
+
 # install monit
 include_recipe 'monit'
 node.normal[:monit][:notify_email] = "me@mvl.ru"

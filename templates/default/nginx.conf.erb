@@ -7,6 +7,10 @@ server {
   server_name <%= @server -%>;
   root /home/<%= @user -%>/app/current/public;
 
+  if ($http_host != $server_name) {
+    rewrite ^(.*)$ http://$server_name$1 last;
+  }
+
   location ~ ^/(assets)/  {
     gzip_static on;
     expires     max;
