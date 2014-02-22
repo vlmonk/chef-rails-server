@@ -46,3 +46,6 @@ include_recipe 'mysql::client'
 
 # mailserver
 include_recipe 'postfix::server'
+
+# redis
+package 'redis-server'
